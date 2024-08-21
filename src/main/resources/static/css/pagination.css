@@ -1,0 +1,30 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.page-button {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: .5rem;
+    text-align: center;
+    text-decoration: none;
+    color: #10069f;
+    font-size: 1.2rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.page-button.active {
+    background-color: #10069f;
+    color: white;
+    border-color: #10069f;
+}
+
+.page-button:hover {
+    background-color: #f0f0f0;
+}

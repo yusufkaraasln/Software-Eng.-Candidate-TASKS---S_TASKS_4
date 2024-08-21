@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Commit List</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+    <link th:href="@{/css/pagination.css}" rel="stylesheet">
+    <link th:href="@{/css/commit-detail.css}" rel="stylesheet">
+</head>
+<body>
+<main class="commit-detail-container">
+    <img class="logo" th:src="@{/assets/logo.svg}" alt="logo">
+
+    <div class="commit-detail">
+        <h1 style="text-align: center">Commit Details</h1>
+
+
+        <div class="detail-item">
+            <strong>Platform:</strong>
+            <span th:text="${commit.platform}"></span>
+        </div>
+        <div class="detail-item">
+            <strong>Hash:</strong>
+            <span th:text="${commit.sha}"></span>
+        </div>
+        <div class="detail-item">
+            <strong>Timestamp:</strong>
+            <span th:text="${commit.committedDate}"></span>
+        </div>
+
+        <div class="detail-item">
+            <strong>Message:</strong>
+            <p th:text="${commit.message}"></p>
+        </div>
+
+        <div class="detail-item">
+            <strong>Author:</strong>
+            <span th:text="${commit.authorName}"></span>
+        </div>
+
+        <div class="detail-item">
+            <strong>Patch:</strong>
+            <div class="patch-content" th:each="patch : ${commit.patches}">
+                <pre th:text="${patch.patchContent}"></pre>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const patchContainers = document.querySelectorAll('.patch-content');
+
+        patchContainers.forEach(container => {
+            let content = container.innerHTML;
+            content = content
+                .split('\n')
+                .map(line => {
+                    if (line.startsWith('+')) {
+                        return `<span class="added-line">${line}</span>`;
+                    } else if (line.startsWith('-')) {
+                        return `<span class="removed-line">${line}</span>`;
+                    }
+                    return `<span>${line}</span>`;
+                })
+                .join('<br>');
+            container.innerHTML = content;
+        });
+    });
+</script>
+
+
+</html>

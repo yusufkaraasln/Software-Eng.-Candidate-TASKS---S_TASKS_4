@@ -1,0 +1,56 @@
+.commit-detail-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.commit-detail {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.detail-item {
+    margin-bottom: 20px;
+}
+
+.detail-item strong {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.detail-item span, .detail-item p {
+    display: block;
+    font-size: 1rem;
+}
+
+.patch-content {
+    font-family: monospace;
+    white-space: pre-wrap;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f4f4f4;
+    overflow-x: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.added-line {
+    background-color: #e6ffed;
+    color: #004d00;
+}
+
+.removed-line {
+    background-color: #ffe6e6;
+    color: #660000;
+}
+
+

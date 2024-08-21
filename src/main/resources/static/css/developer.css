@@ -1,0 +1,32 @@
+.author-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.card-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.card-body {
+    margin-top: 10px;
+}
+
+.card-body p {
+    margin: 0;
+    display: block;
+    font-size: 1.1em;
+    color: #555;
+}

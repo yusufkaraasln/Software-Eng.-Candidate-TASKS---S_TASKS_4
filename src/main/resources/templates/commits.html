@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Commit List</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+    <link th:href="@{/css/pagination.css}" rel="stylesheet">
+    <link th:href="@{/css/commits.css}" rel="stylesheet">
+</head>
+<body>
+<main class="commit_container">
+
+    <img class="logo" th:src="@{/assets/logo.svg}" alt="logo">
+
+    <table>
+        <thead>
+        <tr>
+            <th>Hash</th>
+            <th>Author</th>
+            <th>Created At</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="" th:each="commit : ${commitPage.content}">
+            <td><a th:href="@{/commit/{sha}(sha=${commit.sha})}" th:text="${commit.sha}"></a></td>
+            <td><a th:href="@{/developer/{authorName}(authorName=${commit.authorName})}" th:text="${commit.authorName + ' - ' + commit.authorEmail }"></a></td>
+            <td th:text="${commit.committedDate}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <div class="pagination">
+            <a th:if="${commitPage.hasPrevious()}"
+               th:href="@{/commit-list(page=${commitPage.number - 1}, size=${commitPage.size})}"
+               class="page-button">Prev</a>
+
+            <a th:each="i : ${#numbers.sequence(0, commitPage.totalPages - 1)}"
+               th:href="@{/commit-list(page=${i}, size=${commitPage.size})}"
+               th:text="${i + 1}"
+               class="page-button"
+               th:classappend="${i == commitPage.number ? 'active' : ''}"></a>
+
+            <a th:if="${commitPage.hasNext()}"
+               th:href="@{/commit-list(page=${commitPage.number + 1}, size=${commitPage.size})}"
+               class="page-button">Next</a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
